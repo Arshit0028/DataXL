@@ -26,14 +26,16 @@ const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 function DataTable() {
   const { data } = useExcelStore();
 
-  if (!data || data.length === 0) return null;
-
-  const columns = Object.keys(data[0] as Record<string, any>);
-
   // detect numeric columns for right alignment
   const numericCols = useMemo(
-    () =>
-      new Set(
+    () => {
+      if (!data || data.length === 0) {
+        return new Set<string>();
+      }
+
+      const columns = Object.keys(data[0] as Record<string, any>);
+
+      return new Set(
         columns.filter((col) => {
           const sampleRow = data.find((row) => {
             const v = row[col];
@@ -52,9 +54,14 @@ function DataTable() {
           );
           return !Number.isNaN(num);
         })
-      ),
-    [columns, data]
+      );
+    },
+    [data]
   );
+
+  if (!data || data.length === 0) return null;
+
+  const columns = Object.keys(data[0] as Record<string, any>);
 
   return (
     <div className="relative w-full h-[calc(100vh-260px)] overflow-auto rounded-2xl border border-slate-800/80 bg-slate-950/80 backdrop-blur-sm shadow-[0_18px_45px_rgba(0,0,0,0.7)]">
@@ -267,30 +274,30 @@ function AnalysisPanel() {
           <p className="mb-2 text-[11px] md:text-xs text-slate-400">
             Trend over rows (reading from top to bottom of your sheet).
           </p>
-<div className="h-[200px] md:h-[230px]">
-  <Plot
-    data={[
-      {
-        type: "scatter",
-        mode: "lines+markers",
-        x: values.map((_, i) => i + 1),
-        y: values,
-      } as any,
-    ]}
+        <div className="h-[200px] md:h-[230px]">
+<Plot
+  data={[
+    {
+      type: "scatter",
+      mode: "lines+markers",
+      x: values.map((_, i) => i + 1),
+      y: values,
+    } as const,
+  ]}
     layout={{
       autosize: true,
       margin: { l: 40, r: 10, t: 10, b: 30 },
       xaxis: {
-        title: { text: "Row index" },
+        title: "Row index",
         gridcolor: "rgba(148,163,184,0.25)",
       },
       yaxis: {
-        title: { text: selectedCol },
+        title: selectedCol,
         gridcolor: "rgba(148,163,184,0.25)",
       },
       paper_bgcolor: "rgba(15,23,42,0)",
       plot_bgcolor: "rgba(15,23,42,0)",
-    }}
+    } as any}
     config={{
       displaylogo: false,
       responsive: true,
@@ -335,7 +342,7 @@ function AnalysisPanel() {
                 },
                 paper_bgcolor: "rgba(15,23,42,0)",
                 plot_bgcolor: "rgba(15,23,42,0)",
-              }}
+              } as any}
               config={{
                 displaylogo: false,
                 responsive: true,
