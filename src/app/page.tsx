@@ -267,37 +267,38 @@ function AnalysisPanel() {
           <p className="mb-2 text-[11px] md:text-xs text-slate-400">
             Trend over rows (reading from top to bottom of your sheet).
           </p>
-          <div className="h-[200px] md:h-[230px]">
-            <Plot
-              data={[
-                {
-                  type: "scatter",
-                  mode: "lines+markers",
-                  x: values.map((_, i) => i + 1),
-                  y: values,
-                } as any,
-              ]}
-              layout={{
-                autosize: true,
-                margin: { l: 40, r: 10, t: 10, b: 30 },
-                xaxis: {
-                  title: "Row index",
-                  gridcolor: "rgba(148,163,184,0.25)",
-                },
-                yaxis: {
-                  title: selectedCol,
-                  gridcolor: "rgba(148,163,184,0.25)",
-                },
-                paper_bgcolor: "rgba(15,23,42,0)",
-                plot_bgcolor: "rgba(15,23,42,0)",
-              }}
-              config={{
-                displaylogo: false,
-                responsive: true,
-              }}
-              style={{ width: "100%", height: "100%" }}
-            />
-          </div>
+<div className="h-[200px] md:h-[230px]">
+  <Plot
+    data={[
+      {
+        type: "scatter",
+        mode: "lines+markers",
+        x: values.map((_, i) => i + 1),
+        y: values,
+      } as any,
+    ]}
+    layout={{
+      autosize: true,
+      margin: { l: 40, r: 10, t: 10, b: 30 },
+      xaxis: {
+        title: { text: "Row index" },
+        gridcolor: "rgba(148,163,184,0.25)",
+      },
+      yaxis: {
+        title: { text: selectedCol },
+        gridcolor: "rgba(148,163,184,0.25)",
+      },
+      paper_bgcolor: "rgba(15,23,42,0)",
+      plot_bgcolor: "rgba(15,23,42,0)",
+    }}
+    config={{
+      displaylogo: false,
+      responsive: true,
+    }}
+    style={{ width: "100%", height: "100%" }}
+  />
+</div>
+
           {trend !== 0 && (
             <p className="mt-1 text-[11px] md:text-xs text-slate-400">
               {trend > 0
