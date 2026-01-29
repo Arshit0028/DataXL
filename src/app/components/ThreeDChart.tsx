@@ -18,7 +18,6 @@ export default function ThreeDChart() {
     const firstRow = data[0] as Record<string, any>;
     const columns = Object.keys(firstRow);
 
-    // Find numeric columns
     const numericCols = columns.filter((col) => {
       const value = data.find(
         (row) => row[col] !== null && row[col] !== undefined && row[col] !== ""
@@ -35,14 +34,10 @@ export default function ThreeDChart() {
 
     const [xCol, yCol, zCol] = numericCols;
 
-    const xVals = data.map((row) => Number(row[xCol]));
-    const yVals = data.map((row) => Number(row[yCol]));
-    const zVals = data.map((row) => Number(row[zCol]));
-
     return {
-      x: xVals,
-      y: yVals,
-      z: zVals,
+      x: data.map((row) => Number(row[xCol])),
+      y: data.map((row) => Number(row[yCol])),
+      z: data.map((row) => Number(row[zCol])),
       labels: { x: xCol, y: yCol, z: zCol },
     };
   }, [data]);
@@ -53,7 +48,9 @@ export default function ThreeDChart() {
     return (
       <div className="flex h-full w-full items-center justify-center rounded-3xl border border-dashed border-slate-800/80 bg-slate-950/70 px-4 py-6 text-center">
         <p className="text-xs md:text-sm text-slate-400 max-w-xs">
-          Upload a file with at least <span className="font-semibold">3 numeric columns</span> to see a 3D chart here.
+          Upload a file with at least{" "}
+          <span className="font-semibold">3 numeric columns</span> to see a 3D
+          chart here.
         </p>
       </div>
     );
@@ -80,21 +77,21 @@ export default function ThreeDChart() {
           margin: { l: 0, r: 0, t: 0, b: 0 },
           scene: {
             xaxis: {
-              title: labels.x,
+              title: { text: labels.x },
               gridcolor: "rgba(148,163,184,0.35)",
               zerolinecolor: "rgba(148,163,184,0.6)",
             },
             yaxis: {
-              title: labels.y,
+              title: { text: labels.y },
               gridcolor: "rgba(148,163,184,0.35)",
               zerolinecolor: "rgba(148,163,184,0.6)",
             },
             zaxis: {
-              title: labels.z,
+              title: { text: labels.z },
               gridcolor: "rgba(148,163,184,0.35)",
               zerolinecolor: "rgba(148,163,184,0.6)",
             },
-            bgcolor: "rgba(15,23,42,0)", // transparent so it blends in
+            bgcolor: "rgba(15,23,42,0)",
           },
           paper_bgcolor: "rgba(15,23,42,0)",
         }}
