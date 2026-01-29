@@ -458,7 +458,7 @@ export default function HomePage() {
             </motion.div>
             <div>
               <h1 className="text-lg md:text-xl font-semibold tracking-tight flex items-center gap-2">
-                DataForge
+                DataXL
                 <span className="rounded-full border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 text-xs font-medium text-sky-300">
                   Data Canvas
                 </span>
