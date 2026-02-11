@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+📊 DataXL
 
-## Getting Started
+DataXL is a modern, powerful data analysis web application that allows users to upload Excel or CSV files and instantly transform raw data into meaningful insights, interactive dashboards, and visual reports.
 
-First, run the development server:
+🌐 Live Demo: https://dataxl.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📂 Upload Excel (.xlsx) and CSV files
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📈 Automatic data analysis & processing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📊 Interactive charts and visualizations
 
-## Learn More
+🧠 Smart insights from structured data
 
-To learn more about Next.js, take a look at the following resources:
+⚡ Fast, responsive, and modern UI
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🌙 Clean and user-friendly experience
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+💻 Works on desktop and mobile
 
-## Deploy on Vercel
+🛠 Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Frontend: React.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+State Management: Zustand
+
+Charts & Visualization: Plotly / Chart libraries
+
+Styling: Modern CSS / Tailwind
+
+Deployment: Vercel
+
+📁 How It Works
+
+Upload your Excel or CSV file
+
+DataXL processes and structures the data
+
+Visual dashboards and charts are generated
+
+Analyze trends, patterns, and insights instantly
+
+No complex setup. No coding required.
+
+🧪 Supported File Types
+
+.xlsx
+
+.csv
+
+🎯 Use Cases
+
+Business data analysis
+
+Sales & revenue tracking
+
+Student or academic data analysis
+
+Personal data insights
+
+Dashboard creation
+
+Data visualization projects
